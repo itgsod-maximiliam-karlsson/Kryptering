@@ -5,6 +5,19 @@ def encrypt(input, offset)
   new_code = []
   new_char = ''
   list_code = input.split('')
+
+  list_code.each do |item|
+    list_char.each_with_index do |number_char, index|
+      if item == number_char
+        if index < 22
+          new_code << index + offset
+        else
+
+          new_code << (index - 26) + offset
+        end
+      end
+    end
+  end
 end
 
 
