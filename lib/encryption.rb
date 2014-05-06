@@ -18,6 +18,12 @@ def encrypt(input, offset)
       end
     end
   end
+
+  new_code.each do |item|
+    new_char = new_char + list_char[item]
+  end
+
+  new_char
 end
 
 
