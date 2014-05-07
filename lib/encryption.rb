@@ -4,7 +4,8 @@ def encrypt(input, offset)
   list_char = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z']
   new_code = []
   new_char = ''
-  list_code = input.split('')
+  list_code = input.upcase.split(' ')
+  list_code.each do |word|
 
   list_code.each do |item|
     list_char.each_with_index do |number_char, index|
@@ -23,7 +24,10 @@ def encrypt(input, offset)
     new_char = new_char + list_char[item]
   end
 
-  new_char
+
+  end
+
+  p new_char
 end
 
 
