@@ -1,36 +1,34 @@
-def reset_value(offset)
-  if offset > 0
-    25 - offset
-  end
-end
-
 def encrypt(input, offset)
   raise ArgumentError, 'String must not be empty' if input.empty?
   raise ArgumentError, 'Offset must not be zero' if offset == 0
 
-  list_char = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z']
-  new_code = []
-  new_char = ''
-  space = 32.chr
-  list_code = input.upcase.split('')
+  alphabet = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z']
+  encrypted_input = []
+  input = input.upcase.split('')
 
-  list_code.each do |item|
-    list_char.each_with_index do |number_char, index|
-      if item == number_char
-        if index < reset_value(offset)
-          new_code << index + offset
-        else
-          new_code << (index - 26) + offset
-        end
-      elsif item == space
-        new_code << space
-      end
-    end
+  input.each do |char|
+    pos = alphabet.index(char)
+    char_whih_offset = alphabet[pos + offset]
+    encrypted_input << char_whih_offset
   end
 
-  new_code.each do |item|
-    new_char = new_char + list_char[item]
+  encrypted_input.to_s
+end
+
+
+def decrypt(input, offset)
+  raise ArgumentError, 'String must not be empty' if input.empty?
+  raise ArgumentError, 'Offset must not be zero' if offset == 0
+
+  alphabet = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z']
+  decrypted_input = []
+  input = input.upcase.split('')
+
+  input.each do |char|
+    pos = alphabet.index(char)
+    char_whih_offset = alphabet[pos - offset]
+    decrypted_input << char_whih_offset
   end
 
-  new_char
+  decrypted_input.to_s
 end
