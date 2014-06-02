@@ -30,7 +30,7 @@ def encrypt(input, offset)
   alphabet = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z', ' ']
   encrypted_output = []
   input = input.upcase.split('')
-
+  input
   input.each do |char|
     pos = alphabet.index(char)
     char_whih_offset = alphabet[reset_value(pos, offset)]
@@ -40,8 +40,5 @@ def encrypt(input, offset)
       encrypted_output << ' '
     end
   end
-
-  return encrypted_output.to_s
+  return encrypted_output.join
 end
-
-p encrypt('XXXX', 3)
