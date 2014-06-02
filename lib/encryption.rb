@@ -4,9 +4,7 @@ def reset_value(pos, offset)
     if value <= 26
       return value
     else
-      while value > 26
-        value = value - 26
-      end
+      value = value - 26 while value > 26
       return value
     end
   else
@@ -14,9 +12,7 @@ def reset_value(pos, offset)
     if value >= 0
       return value
     else
-      while value < 0
-        value = value + 26
-      end
+      value = value + 26 while value < 0
       return value
     end
   end
@@ -36,13 +32,11 @@ def encrypt(input, offset)
     pos = alphabet.index(char)
     char_whih_offset = alphabet[reset_value(pos, offset)]
     if char != ' '
-      if char_whih_offset == ' '
-        char_whih_offset = 'A'
-      end
-    encrypted_output << char_whih_offset
+      char_whih_offset = 'A' if char_whih_offset == ' '
+      encrypted_output << char_whih_offset
     else
       encrypted_output << ' '
     end
   end
-  return encrypted_output.join
+  encrypted_output.join
 end
