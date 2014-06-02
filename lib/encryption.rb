@@ -23,6 +23,7 @@ def reset_value(pos, offset)
 end
 
 
+
 def encrypt(input, offset)
   raise ArgumentError, 'String must not be empty' if input.empty?
   raise ArgumentError, 'Offset must not be zero' if offset == 0
@@ -35,7 +36,10 @@ def encrypt(input, offset)
     pos = alphabet.index(char)
     char_whih_offset = alphabet[reset_value(pos, offset)]
     if char != ' '
-      encrypted_output << char_whih_offset
+      if char_whih_offset == ' '
+        char_whih_offset = 'A'
+      end
+    encrypted_output << char_whih_offset
     else
       encrypted_output << ' '
     end
